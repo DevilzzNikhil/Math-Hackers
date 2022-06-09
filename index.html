@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="icon" type="image/x-icon" href="/1.ico">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet" />
+  <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+  <link rel="stylesheet" href="index.css" />
+  <link rel="stylesheet" href="graph.css" />
+  <link rel="stylesheet" href="calculator.css" />
+  <link rel="stylesheet" href="conversion.css" />
+  <script src="https://www.desmos.com/api/v1.7/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6"></script>
+  <title>MATH HACKERS</title>
+</head>
+
+<body>
+  <div class="btn">
+    <span class="fas fa-bars"></span>
+  </div>
+  <nav class="sidebar">
+    <div class="header">
+      <div class="text">
+        <h1>HELPKIT</h1>
+      </div>
+      <div class="btn2">
+        <span class="fas fa-times"></span>
+      </div>
+    </div>
+    <ul>
+      <li>
+        <a href="#calculator"><i class="fas fa-calculator"></i>CALCULATOR</a>
+      </li>
+      <li>
+        <a class="con-show"><i class="fas fa-balance-scale-left"></i>CONVERSIONS
+          <span class="fas fa-caret-down first"></span>
+        </a>
+        <ul class="con-pop">
+          <li><a onclick="change_convertor(this.name)" name="length" href="#conversions"><i
+                class="fas fa-ruler-vertical"></i>Length Conversion</a></li>
+          <li><a onclick="change_convertor(this.name)" name="mass" href="#conversions"><i
+                class="fas fa-weight-hanging"></i>Weight Conversion</a></li>
+          <li><a onclick="change_convertor(this.name)" name="time" href="#conversions"><i
+                class="fas fa-hourglass"></i>Time Conversion</a></li>
+          <li><a onclick="change_convertor(this.name)" name="pressure" href="#conversions"><i
+                class="fas fa-temperature-high"></i>Pressure Conversion</a></li>
+          <li><a onclick="change_convertor(this.name)" name="temperature" href="#conversions"><i
+                class="fas fa-temperature-high"></i>Temperature Conversion</a></li>
+          <li><a onclick="change_convertor(this.name)" name="area" href="#conversions"><i
+                class="fas fa-chart-area"></i>Area Conversion</a></li>
+          <li><a onclick="change_convertor(this.name)" name="volume" href="#conversions"><i
+                class="fas fa-fill"></i>Volume Conversion</a></li>
+        </ul>
+      </li>
+      <li> <a href="#graph">Graph</a> </li>
+    </ul>
+  </nav>
+
+  <div class="app">
+    <div id="calculator">
+      <div class="head">
+        <h1 class="heading1">SCIENTIFIC</h1>
+        <h1 class="heading2">CALCULATOR</h1>
+      </div>
+      <div class="container">
+        <div class="output">
+          <div class="operation">
+            <div class="value"></div>
+          </div>
+          <div class="result">
+            <div class="value">0</div>
+          </div>
+        </div>
+        <div class="input">
+          <div class="column1"></div>
+          <div class="column2"></div>
+        </div>
+      </div>
+    </div>
+    <div class="history">
+      <div class="history-head">
+        <h1>HISTORY</h1>
+        <div class="cross">
+          <span class="fas fa-times"></span>
+        </div>
+      </div>
+      <div class="history-content"></div>
+    </div>
+  </div>
+
+  <div id="conversions">
+    <div class="conversion-box">
+      <select id="select-box1" onchange="opt(value)">
+        <option value="length">Length Conversion</option>
+        <option value="mass">Mass Conversion</option>
+        <option value="time">Time Conversion</option>
+        <option value="volume">Volume Conversion</option>
+        <option value="area">Area Conversion</option>
+        <option value="pressure">Pressure Conversion</option>
+        <option value="temperature">Temperature Conversion</option>
+      </select>
+      <form action="#">
+        <div class="amount">
+          <p>Enter Amount</p>
+          <input id="input1" type="text" value="1" />
+        </div>
+        <div class="drop-down">
+          <div class="from">
+            <p>FROM</p>
+            <select id="slct1">
+            </select>
+          </div>
+          <i class="fa fa-exchange" aria-hidden="true"></i>
+          <div class="to">
+            <p>TO</p>
+            <select id="slct2"></select>
+          </div>
+        </div>
+        <div class="answer">Change the Values</div>
+        <button id="button1" class="button">GET EXCHANGE</button>
+      </form>
+    </div>
+  </div>
+
+  <div id="plot">
+    <div id="graph"></div>
+  </div>
+
+  
+
+
+  <script src="index.js"></script>
+  <script src="convert.js"></script>
+
+  <script>
+    $(".btn").click(function (e) {
+      $(".sidebar").toggleClass("showtime");
+    });
+    $(".btn2").click(function () {
+      $(".sidebar").toggleClass("showtime");
+    });
+    $(".con-show").click(function () {
+      $("nav ul .con-pop").toggleClass("show");
+      console.log("yes");
+    });
+    $(".cross").click(function () {
+      $(".history").toggleClass("toggle");
+    });
+
+    function change_convertor(name) {
+      document.getElementById("select-box1").value = name;
+      opt(name);
+
+    }
+
+    var elt = document.getElementById('graph');
+    var plot = Desmos.GraphingCalculator(elt);
+    plot.setExpression({ id: 'graph1', latex: 'y=x^2' });
+  </script>
+
+
+  <script type="module">
+    import convert from 'https://cdn.skypack.dev/convert@4';
+    var from = "m";
+    var to = "m";
+    $("#slct1").change(function () {
+      from = this.value;
+    });
+
+    $("#slct2").change(function () {
+      to = this.value;
+    });
+
+
+    $("#button1").click(function (e) {
+      e.preventDefault();
+      const value = parseInt($("#input1").val());
+      var ans = convert(value, `${from}`).to(`${to}`);
+      var string = `${value} ${from} = ${ans} ${to} `
+      $(".answer").text(string);
+
+    });
+  </script>
+
+
+  </script>
+</body>
+
+</html>

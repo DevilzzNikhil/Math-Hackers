@@ -1,0 +1,399 @@
+@import url('https://fonts.googleapis.com/css2?family=Nuosu+SIL&display=swap');
+
+*{
+    padding: 0;
+    margin: 0 ;
+}
+
+.head{
+    width:100% ;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.heading1 , .heading2{
+    font-size: 10vh;
+    text-align: center;
+    font-family: 'Permanent Marker', cursive;
+    letter-spacing: 1vw;
+    color: #fdfdfe;
+  text-shadow: 0px 0px 5px #b393d3, 0px 0px 10px #b393d3, 0px 0px 10px #b393d3,
+    0px 0px 20px #b393d3;
+    padding: 15px;
+    margin-left: 3px;
+    margin-right: 3px;
+}
+
+
+.app{
+    height: 130vh;
+    background-color: #301934;
+    padding: 3vh;
+
+}
+
+#calculator {
+    height: 100vh;
+    width: 100%;
+}
+
+.history{
+    display: none;
+    text-align: center;
+    cursor:grabbing;
+    height: 100vh;
+    width: 50vw ;
+    background-image: url("./bg.png") ;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    z-index: 111;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    color: white;
+    overflow-y: scroll;
+    border: 5px solid white;
+    border-radius: 50px;
+    border-top-left-radius: 50px;
+    padding: 10px;
+}
+
+.history::-webkit-scrollbar{
+    display: none;
+}
+.history-row{
+    height: 100px;
+    width: 100%;
+    margin-top: 20px ;
+    margin-bottom: 20px ;
+    border-radius: 50px;
+    display: flex;
+    flex-direction: column;
+}
+.history-row .question , .history-row .answer{
+    height: 50%;
+    text-align: left ;
+    padding-left: 15px;
+    letter-spacing: 2px;
+    font-family: 'Nuosu SIL', serif;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.history-row .answer{
+    color: white;
+}
+.history-row .question{
+    color: rgb(222, 203, 203);
+}
+.history .history-head{
+    line-height: 30px;
+    padding: 10px;
+    border-bottom: 3px solid wheat;
+    font-family: 'Pacifico', cursive;
+    display: flex;
+    letter-spacing: 3px;
+}
+
+.history .history-head h1{
+    width: 75%;
+    position: relative;
+    left: 20%;
+}
+
+.history .history-head .cross{
+    width: 25%;
+    text-align:right ;
+}
+
+.history.toggle{
+    display:none ;
+}
+
+.showing{
+    display: block;
+}
+
+.history .history-head .cross span{
+    background-color: white;
+    padding: 10px;
+    color: black;
+    border-radius: 50%;
+    font-size: x-large;
+    font-weight: 900;
+}
+
+.history .history-content{
+    font-size: large;
+    padding: 10px;
+    word-spacing: 3px;
+    font-family: 'Permanent Marker', cursive;
+}
+
+
+.container {
+    background-color: black;
+    position: relative;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%,-40%);
+    width: 30%;
+    height: 90%;
+    border-radius: 0 0 30px 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.output {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    height: 30%;
+}
+
+.operation {
+    width: 100%;
+    height: 40%;
+    color: #878787;
+    font-size: 4vh;
+    font-weight: bold;
+    position: relative;
+    overflow: hidden;
+}
+
+
+.operation .value {
+    position: absolute;
+    bottom: 5px;
+    right: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.result {
+    width: 100%;
+    height: 70%;
+    color: #FFF;
+    font-size: 6vh;
+    font-weight: bold;
+    overflow: hidden;
+    position: relative;
+}
+
+.result .value {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.input {
+    background-color: #FFF;
+    border-radius: 0 0 25px 25px;
+    border: 1px solid #1d1d1d;
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+}
+
+.column1{
+    width: 100%;
+    height: 50%;
+}
+.column2{
+    width: 100%;
+    height: 50%;
+}
+ .row2 , .row {
+     height: 20%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.row2 button , .row button {
+    width: 18.5%;
+    height: 90%;
+    font-size: 5vh;
+    border: none;
+    margin-top: 10%;    
+    margin-bottom: 10%;  
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.row button:hover , .row2 button:hover {
+    font-weight: bold;
+    color: red;
+}
+
+.row2 #calculate {
+    color: #FFF;
+    background-color: #46e0bc;
+    border-radius: 50px;
+}
+
+.row2 #delete {
+    color: #FFF;
+    background-color: #e05046;
+    border-radius: 10px !important;
+}
+
+#division,
+#multiplication,
+#subtraction,
+#addition {
+    color: #18b893;
+}
+
+.input button span {
+    font-size: 0.6em;
+    position: absolute;
+}
+
+.active-angle {
+    background-size: contain;
+    background-color: #1d1d1d !important;
+    color: #FFF !important;
+    border-radius: 10px !important;
+    overflow: hidden;
+}
+
+@media only screen and ( max-width : 1800px)
+{
+    .container{
+        width: 45%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+    }
+}
+
+
+@media only screen and ( max-width : 1500px)
+{
+    .head{
+        width:100% ;
+        display: flex;
+        flex-direction: column;        
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+    }
+    .app{
+        height: 140vh;
+        background-color: #301934;
+        padding: 3vh;
+    }
+}
+
+
+
+
+@media only screen and ( max-width : 1400px)
+{
+    .row2 button , .row button {
+        width: 25%;
+        height: 90%;
+        font-size: 25px;
+        border: none;
+        border-radius: 50%;
+        margin-top: 5%;    
+        margin-bottom: 5%;    
+    
+        background-color: transparent;
+        cursor: pointer;
+    }
+}
+
+@media only screen and ( max-width : 1000px)
+{
+    .row2 button , .row button {
+        width: 25%;
+        height: 90%;
+        font-size: 20px;  
+        margin: 0 ;
+    }
+
+    .input{
+        display: flex;
+        flex-direction: column;
+    }.column1{
+        width: 100% ;
+        height: 50%;
+    }
+    .column2{
+        width: 100% ;
+        height: 50%;
+    }
+    .container{
+        width: 70%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+    }
+    .history{
+        width: 70vw;
+    }
+    .history-row .question , .history-row .answer{
+        font-size: 20px;
+    }
+}
+
+
+@media only screen and ( max-width : 900px)
+{
+    .heading1 , .heading2{
+        font-size: 8vh;
+        text-align: center;
+        font-family: 'Permanent Marker', cursive;
+        color: #fdfdfe;
+      text-shadow: 0px 0px 5px #b393d3, 0px 0px 10px #b393d3, 0px 0px 10px #b393d3,
+        0px 0px 20px #b393d3;
+        padding: 15px;
+        margin-left: 3px;
+        margin-right: 3px;
+    }
+    .app{
+        width: 120vw;
+    }
+}
+
+@media only screen and ( max-width : 600px)
+{
+
+    .heading1 , .heading2{
+        font-size: 7vh;
+    }
+    .row2 button , .row button {
+        width: 25%;
+        height: 80%;
+        font-size: 20px;   
+        margin: 0;
+    }
+    .container{
+        width: 100%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+    }
+    .history{
+        width: 100vw;
+    }
+    .history-row .question , .history-row .answer{
+        font-size: 15px;
+    }
+}
+@media only screen and ( max-width : 400px)
+{
+    .row2 button , .row button {
+        font-size: 15px;   
+    }
+}
+
